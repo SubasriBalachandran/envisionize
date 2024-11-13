@@ -21,9 +21,9 @@ import Register from "./Components/Register";
 import Reunion from './Components/Reunion';
 import ThemeSelection from "./Components/ThemeSelection";
 import Wedding from "./Components/Wedding";
+import ARComponent from './Components/ARComponent'; // Import the ARComponent
 
 const App = () => {
-  // Define cartItems state
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (item) => {
@@ -40,7 +40,8 @@ const App = () => {
         <Route path="/items" element={<ItemsList addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cartItems={cartItems} />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />        <Route path="/login" element={<Login />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/themes" element={<ThemeSelection />} />
         <Route path="/themes/wedding" element={<Wedding addToCart={addToCart} />} />
@@ -52,6 +53,7 @@ const App = () => {
         <Route path="/themes/holiday-party" element={<HolidayParty addToCart={addToCart} />} />
         <Route path="/themes/corporate-event" element={<CorporateEvent addToCart={addToCart} />} />
         <Route path="/themes/reunion" element={<Reunion addToCart={addToCart} />} />
+        {/* <Route path="/ar" element={<ARComponent />} /> Add the ARComponent route */}
       </Routes>
       <ConditionalFooter />
     </Router>
@@ -61,15 +63,13 @@ const App = () => {
 // Component to conditionally render the Footer
 const ConditionalFooter = () => {
   const location = useLocation();
-
-  // Check if the current path is either login or register
   const hideFooterPaths = ['/login', '/register'];
-  
+
   if (hideFooterPaths.includes(location.pathname)) {
-    return null; // Don't render Footer on these pages
+    return null;
   }
 
-  return <Footer />; // Render Footer on other pages
+  return <Footer />;
 };
 
 export default App;

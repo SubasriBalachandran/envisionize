@@ -18,6 +18,7 @@ const weddingItems = [
   
 ];
 
-export default function Wedding({ addToCart }) {  // Accept addToCart as a prop
+export default function Wedding({ addToCart }) {  
+  
   return <ItemList items={weddingItems} addToCart={addToCart} />;  // Pass it down to ItemList
 }
